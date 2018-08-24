@@ -59,10 +59,6 @@ int main() {
 		cout << "T2: " << t2S << endl;
 	}
 
-
-	
-	
-
 	system("pause");
 	return 0;
 }
