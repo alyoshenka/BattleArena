@@ -69,7 +69,7 @@ void sortTeams(Player t[], int tS) {
 
 // This function makes the team mebers of equal indexes
 // fight each other
-void fight(Player p1, Player p2) {
+int fight(Player p1, Player p2) {
 	int damage = 0;
 	cout << endl;
 	cout << p1.name << " fights " << p2.name << endl;
@@ -87,8 +87,10 @@ void fight(Player p1, Player p2) {
 	p2.health -= damage;
 	cout << p2.name << ": " << p2.health << " HP"
 		<< endl;
+	return damage;
 }
 
+// THIS IS REDUNDANT NOW
 // This function tells when a player has died
 void isDead(Player p) {
 	cout << p.name << " is dead." << endl;
@@ -109,4 +111,37 @@ void printStats(Player t[], int tS) {
 		cout << endl;
 	}
 	textcolor();
+}
+
+// This function tests to see if any players have dies
+// and if so prints which player
+void checkForDeath(Player t[], int tS) {
+	cout << endl;
+	for (int i = 0; i < tS; i++) {
+		// if dead
+		if (t[i].health <= 0) {
+			cout << t[i].name << " has died." << endl;
+			// remove from array
+
+			// change color to gray
+			t[i].color = 8;
+
+			// pause so I can see what is happening
+			system("pause");
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+// This function runs the program
+void go() {
+
 }
