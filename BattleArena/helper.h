@@ -15,6 +15,9 @@ void printStats(Player p[], int tS);
 
 void checkForDeath(Player t[], int tS);
 
+int updateTS(Player t[], int tS);
+
+void fightTeams(Player t1[], int t1S, Player t2[], int t2S);
 
 
 

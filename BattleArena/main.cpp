@@ -3,12 +3,19 @@
 #include "helper.h" // helper.h includes Player.cpp
 using namespace std;
 
+// To Do
+	// random attacks
+	// take player out of array when they die
+		// or skip over them
+
+
 // arr size
 // cout << (sizeof(team1)/sizeof(*team1)) << endl;
 
 int main() {
 
 	// Total = 100;
+	// CHECK TOTALS / BALANCE TEAMS
 	Player red = {"Red", 80, 50, 15, "redAttack", 1, 4};
 	Player orange = {"Orange", 70, 25, 5, "orangeAttack", 1, 9};
 	Player yellow = {"Yellow", 50, 30, 20, "yellowAttack", 1, 6};
@@ -51,8 +58,8 @@ int main() {
 
 
 		// update tS
-		t1S = (sizeof(team1) / sizeof(*team1));
-		t2S = (sizeof(team2) / sizeof(*team2));
+		t1S = updateTS(team1, t1S);
+		t2S = updateTS(team2, t2S);
 
 		// test
 		cout << "T1: " << t1S << endl;

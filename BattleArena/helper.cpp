@@ -113,7 +113,7 @@ void printStats(Player t[], int tS) {
 	textcolor();
 }
 
-// This function tests to see if any players have dies
+// This function tests to see if any players have died
 // and if so prints which player
 void checkForDeath(Player t[], int tS) {
 	cout << endl;
@@ -130,6 +130,26 @@ void checkForDeath(Player t[], int tS) {
 			system("pause");
 		}
 	}
+}
+
+// This function updates the team size
+int updateTS(Player t[], int tS) {
+
+	int newTS = 0;
+
+	for (int i = 0; i < tS; i++) {
+		if (t[i].health != 0) {
+			newTS++;
+		}
+	}
+	return newTS;
+}
+
+// Utilixe rand()
+// This functions makes two teams fight
+void fightTeams(Player t1[], int t1S, Player t2[], int t2S) {
+	// may need return type?
+	// may not be the right implementation?
 }
 
 
