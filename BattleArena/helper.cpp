@@ -1,9 +1,9 @@
 #include <iostream>
-#include "helper.h" // includes Player.cpp
-// #include "Player.cpp"
+#include "helper.h"
 #include <windows.h> // Sleep()
 #include <conio.h> // color
 #include <stdio.h>
+// #include <unistd.h> // sleep
 	/*
 	The different color codes are
 
@@ -25,6 +25,12 @@
 	15  WHITE
 	*/
 
+// NOTE usint Sleep() won't work on other OSs
+
+// To Do
+// function to determine random matchups
+// function to sort teams by health
+
 // This function sets the color of the text
 void textcolor(int color) {
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
@@ -36,20 +42,16 @@ void textcolor() {
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
 }
 
-
 // This function lists the teams and their members
-void listTeams(Player team1[], Player team2[], int t1S, int t2S) {
-	cout << "Team 1:" << endl;
-	for (int i = 0; i < t1S; i++) {
-		cout << team1[i].name << endl;
+void listTeam(Player team[], int tS, int teamNum) {
+	textcolor();
+	cout << "Team " << teamNum << ":" << endl;
+	for (int i = 0; i < tS; i++) {
+		textcolor(team[i].color);
+		cout << team[i].name << endl;
 	}
-
+	textcolor();
 	cout << endl;
-
-	cout << "Team 2:" << endl;
-	for (int i = 0; i < t2S; i++) {
-		cout << team2[i].name << endl;
-	}
 }
 
 // This function sorts the teams in descending order
@@ -69,23 +71,51 @@ void sortTeams(Player t[], int tS) {
 
 // This function makes the team mebers of equal indexes
 // fight each other
-int fight(Player p1, Player p2) {
+int fightPlayers(Player p1, Player p2) {
+	int delayTime = 500;
 	int damage = 0;
 	cout << endl;
-	cout << p1.name << " fights " << p2.name << endl;
-	cout << p1.name << " hits " << p2.name << " with " <<
-		p1.attackName << " for " << p1.attackP << " points."
-		<< endl;
-	cout << p2.name << " defends with " << p2.defP <<
+	textcolor(p1.color);
+	cout << p1.name;
+	textcolor();
+	cout << " fights ";
+	textcolor(p2.color);
+	cout << p2.name << endl;
+	Sleep(delayTime);
+	textcolor(p1.color);
+	cout << p1.name;
+	textcolor();
+	cout << " hits ";
+	textcolor(p2.color);
+	cout << p2.name;
+	textcolor();
+	cout << " with ";
+	textcolor(p1.color); 
+	cout << p1.attackName;
+	textcolor();
+	cout << " for " << p1.attackP << " points." << endl;
+	Sleep(delayTime);
+	textcolor(p2.color);
+	cout << p2.name;
+	textcolor();
+	cout << " defends with " << p2.defP <<
 		" points." << endl;
+	Sleep(delayTime);
 	damage = p1.attackP - p2.defP;
 	if (damage < 0) {
 		damage = 0;
 	}
-	cout << p2.name << " takes " << damage <<
+	textcolor(p2.color);
+	cout << p2.name;
+	textcolor();
+	cout << " takes " << damage <<
 		" damage. " << endl;
+	Sleep(delayTime);
 	p2.health -= damage;
-	cout << p2.name << ": " << p2.health << " HP"
+	textcolor(p2.color);
+	cout << p2.name;
+	textcolor();
+	cout << ": " << p2.health << " HP"
 		<< endl;
 	return damage;
 }
@@ -102,15 +132,16 @@ void printStats(Player t[], int tS) {
 	cout << endl;
 	cout << "Team: " << t[0].team << endl;
 	for (int i = 0; i < tS; i++) {
+		cout << "Player: ";
 		textcolor(t[i].color);
-		cout << "Player: " << t[i].name << endl;
+		std::cout << t[i].name << endl;
+		textcolor();
 		cout << "Health: " << t[i].health << endl;
 		cout << "Attack: " << t[i].attackP << " points" << endl;
 		cout << "Defense: " << t[i].defP << " points" << endl;
 		cout << "Attack Name: " << t[i].attackName << endl;
 		cout << endl;
 	}
-	textcolor();
 }
 
 // This function tests to see if any players have died
@@ -145,11 +176,12 @@ int updateTS(Player t[], int tS) {
 	return newTS;
 }
 
-// Utilixe rand()
+// Utilize rand()
 // This functions makes two teams fight
-void fightTeams(Player t1[], int t1S, Player t2[], int t2S) {
-	// may need return type?
-	// may not be the right implementation?
+void fightTeams(Player t1[], Player t2[]) {
+	// sort teams
+	// determine number of eligible players on each team
+
 }
 
 
