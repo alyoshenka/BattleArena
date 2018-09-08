@@ -3,6 +3,7 @@
 #include <windows.h> // Sleep()
 #include <conio.h> // color
 #include <stdio.h>
+#include <time.h>
 // #include <unistd.h> // sleep
 	/*
 	The different color codes are
@@ -56,7 +57,7 @@ void listTeam(Player team[], int tS, int teamNum) {
 
 // This function sorts the teams in descending order
 // according to their health
-void sortTeams(Player t[], int tS) {
+void sortTeam(Player t[], int tS) {
 	Player swap = {};
 	for (int i = 0; i < tS; i++) {
 		for (int j = 0; j < tS - 1; j++) {
@@ -178,10 +179,49 @@ int updateTS(Player t[], int tS) {
 
 // Utilize rand()
 // This functions makes two teams fight
-void fightTeams(Player t1[], Player t2[]) {
+void fightTeams(Player t1[], Player t2[], int t1S, int t2S) {
 	// sort teams
 	// determine number of eligible players on each team
 
+	// iterate through arrays and determine if player is dead
+	// this is determined by health
+	int t1eligible = 0;
+	int t2eligible = 0;
+}
+
+// Put rand() here
+// picks a random player on the team to fight
+// and returns the index value of said player
+int pickPlayer(Player t[]) {
+
+	// enable random function
+	srand(time(NULL));
+
+	// iterate through array and determine how many players
+	// are still alive
+	int count = 0;
+	// MAKE DEPENDANT
+	for (int i = 0; i < 3; i++) {
+		// if still alive
+		if (t[i].health > 0) {
+			count++;
+		}
+	}
+
+	// get a random value within this range
+	int playerIdx = 0;
+	playerIdx = rand() % count + 1;
+
+	// iterate through array, skipping over dead players,
+	// to find the playerIdx nth player that is not dead
+	for (int i = 0; i < count; i++) {
+		if (t[i].health > 0) {
+			return i;
+		}
+		else {
+			// ????
+		}
+	}
 }
 
 
