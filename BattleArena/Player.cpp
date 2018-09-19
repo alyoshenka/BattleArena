@@ -1,21 +1,29 @@
-#include <string>
-using namespace std;
+#include "Player.h"
 
-class Player {
 
-	// MAYBE?
-	// Access specifier
-	public:
 
-	// Data Members
-	string name;
-	int health;
-	int attackP;
-	int defP;
-	string attackName;
-	int team;
-	int color;
+Player::Player()
+{
+}
 
-	// Member Functions
+Player::Player(string nameN, int healthN, int attackPN, int defPN,
+	string attackNameN, int teamN, int colorN)
+{
+	// N stands for new
+	// error "cannot convert from 'initializer list' to class
+	//hoping constructor fixes this
+	name = nameN;
+	health = healthN;
+	attackP = attackPN;
+	defP = defPN;
+	attackName = attackNameN;
+	team = teamN;
+	color = colorN;
+}
 
-};
+
+
+Player::~Player()
+{
+}
+

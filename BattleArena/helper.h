@@ -1,27 +1,23 @@
 #pragma once
-#include "Player.cpp"
 
-void textcolor(int color);
+#include "Player.h"
 
-void listTeam(Player team[], int tS, int teamNum);
+void printWelcome();
 
-void sortTeam(Player t[],int tS);
+void printTeam(Player team[], string name, int tSize);
 
-int fightPlayers(Player p1, Player p2);
+int fight(Player p1, Player p2);
 
-void isDead(Player p);
+void printStats(Player t[], int tS);
 
-void printStats(Player p[], int tS);
+void printBasicStats(Player t[], int tS);
 
-void checkForDeath(Player t[], int tS);
+void sortTeam(Player t[], int tS);
 
-int updateTS(Player t[], int tS);
+bool hasLivingMember(Player t[], int tS);
 
-void fightTeams(Player t1[], int t1S, Player t2[], int t2S);
+int chooseRandomOpponent(Player t[], int tS);
 
-int pickPlayer(Player t[]);
+bool checkForDeath(Player p);
 
-
-
-void go();
-
+bool checkForDeath(Player p);
