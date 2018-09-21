@@ -5,6 +5,7 @@
 using std::cout;
 using std::endl;
 
+// Main application function
 int main() {
 
 	// teams
@@ -28,10 +29,14 @@ int main() {
 	printStats(team1, teamSize);
 	printStats(team2, teamSize);
 
+	
+	// round counter
+	int round = 1;
+
+	int defenderIdx = -1;
+
 	// this is an infinite loop that breaks out when one
 	// team dies
-	int round = 1;
-	int defenderIdx = -1;
 	for (;;) {
 		// Team 1 attacking
 		cout << "\nRound " << round << " - Team 1\n" << endl;
