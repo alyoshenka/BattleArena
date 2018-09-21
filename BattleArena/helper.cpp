@@ -31,9 +31,8 @@ void printWelcome() {
 
 // This function prints the team members.
 void printTeam(Player team[], string name, int tSize) {
-
 	textcolor();
-
+	cout << endl;
 	cout << name << ":" << endl;
 	for (int i = 0; i < tSize; i++) {
 		textcolor(team[i].color);
@@ -48,14 +47,20 @@ void printTeam(Player team[], string name, int tSize) {
 int fight(Player p1, Player p2) {
 	// print stuff
 	int delayTime = 500;
-	int damage = p1.attackP;
+	int damage = p1.attackP - p2.defP;
+	if (damage < 0) {
+		damage = 0;
+	}
 	cout << endl;
+	cout << "  [ ";
 	textcolor(p1.color);
 	cout << p1.name;
 	textcolor();
 	cout << " fights ";
 	textcolor(p2.color);
-	cout << p2.name << endl;
+	cout << p2.name;
+	textcolor();
+	cout << " ]\n" << endl;
 	Sleep(delayTime);
 	textcolor(p1.color);
 	cout << p1.name;
@@ -78,19 +83,14 @@ int fight(Player p1, Player p2) {
 	Sleep(delayTime);
 	textcolor(p2.color);
 	cout << p2.name;
-	textcolor();
+	textcolor();	
 	cout << " takes " << damage <<
-		" damage. " << endl;
+		" damage.\n" << endl;	
 	Sleep(delayTime);
 	textcolor(p2.color);
 	cout << p2.name;
 	textcolor();
-	// change stuff
-	damage = p1.attackP - p2.health;
-	if (damage < 0) {
-		damage = p2.health;
-	}
-	cout << ": " << p2.health - damage << " HP" << endl;
+	cout << ": " << p2.health - damage << " HP\n" << endl;
 	return damage;
 }
 
@@ -123,8 +123,9 @@ void printBasicStats(Player t[], int tS) {
 		textcolor(t[i].color);
 		std::cout << t[i].name;
 		textcolor();
-		cout << ": " << t[i].health << "   ";
+		cout << ": " << t[i].health << " HP  ";
 	}
+	cout << endl;
 	cout << endl;
 }
 
